@@ -4,10 +4,16 @@
   import start from "../assets/start.svg";
   import pause from "../assets/pause.svg";
   import stop from "../assets/stop.svg";
+  import skip from "../assets/skip.svg";
   const minutesToSeconds = (minutes) => minutes * 60;
   const secondsToMinutes = (seconds) => Math.floor(seconds / 60);
   const padWithZeroes = (number) => number.toString().padStart(2, "0");
-  const State = { idle: "idle", inProgress: "in progress", resting: "resting" };
+  const State = {
+    idle: "idle",
+    inProgress: "in progress",
+    resting: "resting",
+    paused: "paused",
+  };
 
   const POMODORO_S = minutesToSeconds(25);
   const LONG_BREAK_S = minutesToSeconds(20);
@@ -63,8 +69,7 @@
   }
   function pausePomodoro() {
     clearInterval(interval);
-    currentState = State.idle;
-    // hide pause button and show start button
+    currentState = State.paused;
   }
   function idle() {
     currentState = State.idle;
@@ -77,7 +82,7 @@
 <section>
   <div class="flex justify-center items-center">
     {#if pomodoroTime < POMODORO_S / 2}
-      <img class="w-24 h-24" src={pomodoroHalf} alt="Pomodoro a metà" />
+      <img style="width: 50vh" src={pomodoroHalf} alt="Pomodoro a metà" />
     {:else}
       <img style="width: 50vh;" src={pomodoroPieno} alt="Pomodoro pieno" />
     {/if}
@@ -89,10 +94,9 @@
   </div>
   <div class="flex justify-center items-center p-3">
     <button
-      hidden={currentState !== State.idle}
+      hidden={currentState !== State.idle && currentState !== State.paused}
       class="text-verde"
       on:click={startPomodoro}
-      disabled={currentState !== State.idle}
     >
       <img class="h-16" src={start} alt="" />
     </button>
@@ -100,11 +104,21 @@
       hidden={currentState !== State.inProgress}
       class="text-verde"
       on:click={pausePomodoro}
-      disabled={currentState !== State.inProgress}
     >
       <img class="h-16" src={pause} alt="" />
     </button>
-    <button class="text-verde ml-5" on:click={cancelPomodoro}>
+    <button
+      hidden={currentState === State.idle}
+      class="text-verde ml-5"
+      on:click={completePomodoro}
+    >
+      <img class="h-16" src={skip} alt="" />
+    </button>
+    <button
+      hidden={currentState === State.idle}
+      class="text-verde ml-5"
+      on:click={cancelPomodoro}
+    >
       <img class="h-16" src={stop} alt="" />
     </button>
   </div>
