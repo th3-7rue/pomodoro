@@ -12,7 +12,8 @@
     idle: "idle",
     inProgress: "in progress",
     resting: "resting",
-    paused: "paused",
+    progressPaused: "progressPaused",
+    restPaused: "restPaused",
   };
 
   const POMODORO_S = minutesToSeconds(25);
@@ -50,7 +51,23 @@
       rest(SHORT_BREAK_S);
     }
   }
-
+  function completeRest() {
+    idle();
+    startPomodoro();
+  }
+  function skipTime() {
+    if (
+      currentState === State.inProgress ||
+      currentState === State.progressPaused
+    ) {
+      completePomodoro();
+    } else if (
+      currentState === State.resting ||
+      currentState === State.restPaused
+    ) {
+      completeRest();
+    }
+  }
   function rest(time) {
     currentState = State.resting;
     pomodoroTime = time;
@@ -67,9 +84,13 @@
     // the cause of the interruption.
     idle();
   }
-  function pausePomodoro() {
+  function pauseTime() {
     clearInterval(interval);
-    currentState = State.paused;
+    if (currentState === State.inProgress) {
+      currentState = State.progressPaused;
+    } else if (currentState === State.resting) {
+      currentState = State.restPaused;
+    }
   }
   function idle() {
     currentState = State.idle;
@@ -94,23 +115,27 @@
   </div>
   <div class="flex justify-center items-center p-3">
     <button
-      hidden={currentState !== State.idle && currentState !== State.paused}
+      hidden={currentState !== State.idle &&
+        currentState !== State.progressPaused &&
+        currentState !== State.restPaused}
       class="text-verde"
       on:click={startPomodoro}
     >
       <img class="h-16" src={start} alt="" />
     </button>
     <button
-      hidden={currentState !== State.inProgress}
+      hidden={currentState === State.idle ||
+        currentState === State.progressPaused ||
+        currentState === State.restPaused}
       class="text-verde"
-      on:click={pausePomodoro}
+      on:click={pauseTime}
     >
       <img class="h-16" src={pause} alt="" />
     </button>
     <button
       hidden={currentState === State.idle}
       class="text-verde ml-5"
-      on:click={completePomodoro}
+      on:click={skipTime}
     >
       <img class="h-16" src={skip} alt="" />
     </button>
