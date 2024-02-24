@@ -12,7 +12,7 @@
   <link
     rel="preconnect"
     href="https://fonts.gstatic.com"
-    crossOrigin="anonymous"
+    crossorigin="anonymous"
   />
   <link
     href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
