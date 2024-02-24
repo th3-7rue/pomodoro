@@ -4,7 +4,6 @@
   import start from "../assets/start.svg";
   import pause from "../assets/pause.svg";
   import stop from "../assets/stop.svg";
-  var srcStartPause = start;
   const minutesToSeconds = (minutes) => minutes * 60;
   const secondsToMinutes = (seconds) => Math.floor(seconds / 60);
   const padWithZeroes = (number) => number.toString().padStart(2, "0");
@@ -26,7 +25,6 @@
   }
 
   function startPomodoro() {
-    srcStartPause = pause;
     currentState = State.inProgress;
     interval = setInterval(() => {
       if (pomodoroTime === 0) {
@@ -45,7 +43,6 @@
     } else {
       rest(SHORT_BREAK_S);
     }
-    srcStartPause = start;
   }
 
   function rest(time) {
@@ -64,13 +61,17 @@
     // the cause of the interruption.
     idle();
   }
-
+  function pausePomodoro() {
+    clearInterval(interval);
+    currentState = State.idle;
+    // hide pause button and show start button
+  }
   function idle() {
     currentState = State.idle;
     clearInterval(interval);
     pomodoroTime = POMODORO_S;
   }
-  // se tempo è a metà mostra pomodoro half
+  // add skip button logic
 </script>
 
 <section>
@@ -82,24 +83,29 @@
     {/if}
   </div>
   <div class="flex justify-center items-center">
-    <p class="text-verde text-7xl md:text-9xl ">
+    <p class="text-verde text-7xl md:text-9xl">
       {formatTime(pomodoroTime)}
     </p>
   </div>
   <div class="flex justify-center items-center p-3">
     <button
+      hidden={currentState !== State.idle}
       class="text-verde"
       on:click={startPomodoro}
       disabled={currentState !== State.idle}
     >
-      <img class="h-10" src={srcStartPause} alt="" />
+      <img class="h-16" src={start} alt="" />
     </button>
     <button
-      class="text-verde ml-5"
-      on:click={cancelPomodoro}
+      hidden={currentState !== State.inProgress}
+      class="text-verde"
+      on:click={pausePomodoro}
       disabled={currentState !== State.inProgress}
     >
-      <img class="h-10" src={stop} alt="" />
+      <img class="h-16" src={pause} alt="" />
+    </button>
+    <button class="text-verde ml-5" on:click={cancelPomodoro}>
+      <img class="h-16" src={stop} alt="" />
     </button>
   </div>
   <!--button on:click={completePomodoro}>complete</button-->
