@@ -19,4 +19,4 @@ export default {
   plugins: [],
 }
 
-/** npx tailwindcss -i ./src/input.css -o ./src/output.css --watch */
+/** npx tailwindcss -i ./src/input.css -o ./src/app.css --watch */

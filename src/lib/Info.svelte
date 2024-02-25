@@ -1,6 +1,6 @@
 <div class="bg-rosso-chiaro">
   <div class="container mx-auto px-4">
-    <div class="text-white text-7xl md:text-9xl text-center p-4">
+    <div class="text-white text-6xl md:text-9xl text-center p-4">
       La tecnica del pomodoro
     </div>
     <div class="text-white p-4 text-3xl pb-5">
