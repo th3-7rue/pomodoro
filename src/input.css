@@ -14,7 +14,8 @@
         -10px -10px 20px #841a02;
 }
 
-.neu-btn:hover {
+.neu-btn:hover,
+.neu-btn.sm:hover {
     background: linear-gradient(145deg, #681502, #7b1902);
 }
 
@@ -23,9 +24,24 @@
         inset -10px -10px 20px #841a02;
 }
 
+.neu-btn.sm:active {
+    box-shadow: inset 6px 6px 13px #621402,
+        inset -6px -6px 13px #841a02;
+}
+
+.neu-btn.sm.active {
+    box-shadow: inset 6px 6px 13px #621402,
+        inset -6px -6px 13px #841a02;
+}
+
 .neu-btn.sm {
     border-radius: 50px;
     background: #731702;
     box-shadow: 6px 6px 13px #621402,
         -6px -6px 13px #841a02;
+}
+
+.neu-btn:focus,
+.neu-btn.sm:focus {
+    outline: none;
 }

@@ -8,6 +8,7 @@ export default {
 
     extend: {
       colors: {
+        'white': '#FFE9E9',
         transparent: "transparent",
         current: "currentColor",
         'verde': '#6E8C03',

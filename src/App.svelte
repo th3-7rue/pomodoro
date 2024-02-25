@@ -7,6 +7,7 @@
   import ListaTodo from "./lib/ListaTodo.svelte";
   import TodoCounter from "./lib/TodoCounter.svelte";
   import { todos } from "./lib/store";
+  import { fade } from "svelte/transition";
 </script>
 
 <head>
@@ -40,7 +41,7 @@
         class="neu-btn px-20 py-3 rounded-2xl text-xl">To Do</button
       >
     </div>
-    <div id="todo" class="hidden">
+    <div id="todo" class="hidden text-verde-chiaro p-3">
       <TodoCounter />
       <AddForm />
       <ListaTodo todoList={$todos} />

@@ -14,9 +14,11 @@
   }
 </script>
 
-<div class="p-1 mt-1">
-  {todo.title}
-  <button class="neu-btn sm rounded" on:click={deleteTodo}>
+<div class="p-1 mt-1 flex items-center">
+  <div class="">
+    {todo.title}
+  </div>
+  <button class=" neu-btn sm rounded ms-3 p-1" on:click={deleteTodo}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-6 w-6"
