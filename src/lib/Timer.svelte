@@ -103,9 +103,17 @@
 <section>
   <div class="flex justify-center items-center">
     {#if pomodoroTime < POMODORO_S / 2}
-      <img style="width: 50vh" src={pomodoroHalf} alt="Pomodoro a metà" />
+      <img
+        style="width: 50vh; height: auto;"
+        src={pomodoroHalf}
+        alt="Pomodoro a metà"
+      />
     {:else}
-      <img style="width: 50vh;" src={pomodoroPieno} alt="Pomodoro pieno" />
+      <img
+        style="width: 50vh; height: auto;"
+        src={pomodoroPieno}
+        alt="Pomodoro pieno"
+      />
     {/if}
   </div>
   <div class="flex justify-center items-center">

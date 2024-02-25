@@ -8,12 +8,11 @@ export default {
 
     extend: {
       colors: {
-        'white': '#FFE9E9',
         transparent: "transparent",
         current: "currentColor",
         'verde': '#6E8C03',
         'rosso-scuro': '#731702',
-        'rosso-chiaro': '#d91604',
+        'rosso-chiaro': '#B31003',
         'verde-chiaro': '#E1F2BB',
         'verde-scuro': '#465902',
       },
