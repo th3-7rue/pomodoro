@@ -121,7 +121,7 @@
       class="text-verde"
       on:click={startPomodoro}
     >
-      <img class="h-16" src={start} alt="" />
+      <img style="height: 80px;" src={start} alt="" />
     </button>
     <button
       hidden={currentState === State.idle ||
@@ -130,21 +130,21 @@
       class="text-verde"
       on:click={pauseTime}
     >
-      <img class="h-16" src={pause} alt="" />
+      <img style="height: 70px;" src={pause} alt="" />
     </button>
     <button
       hidden={currentState === State.idle}
       class="text-verde ml-5"
       on:click={skipTime}
     >
-      <img class="h-16" src={skip} alt="" />
+      <img style="height: 80px;" src={skip} alt="" />
     </button>
     <button
       hidden={currentState === State.idle}
       class="text-verde ml-5"
       on:click={cancelPomodoro}
     >
-      <img class="h-16" src={stop} alt="" />
+      <img style="height: 80px;" src={stop} alt="" />
     </button>
   </div>
   <!--button on:click={completePomodoro}>complete</button-->
