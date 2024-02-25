@@ -7,3 +7,18 @@
     font-weight: 400;
     font-style: normal;
 }
+
+.neu-btn {
+    background: #731702;
+    box-shadow: 10px 10px 20px #621402,
+        -10px -10px 20px #841a02;
+}
+
+.neu-btn:hover {
+    background: linear-gradient(145deg, #681502, #7b1902);
+}
+
+.neu-btn:active {
+    box-shadow: inset 10px 10px 20px #621402,
+        inset -10px -10px 20px #841a02;
+}

@@ -10,9 +10,11 @@ export default {
       colors: {
         transparent: "transparent",
         current: "currentColor",
-        'verde': '#e1f2bb',
+        'verde': '#6E8C03',
         'rosso-scuro': '#731702',
         'rosso-chiaro': '#d91604',
+        'verde-chiaro': '#E1F2BB',
+        'verde-scuro': '#465902',
       },
     },
   },

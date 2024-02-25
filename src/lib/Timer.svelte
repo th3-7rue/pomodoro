@@ -109,11 +109,11 @@
     {/if}
   </div>
   <div class="flex justify-center items-center">
-    <p class="text-verde text-7xl md:text-9xl">
+    <p class="text-verde-chiaro text-7xl md:text-9xl">
       {formatTime(pomodoroTime)}
     </p>
   </div>
-  <div class="flex justify-center items-center p-3">
+  <div class="flex justify-center items-center md:p-3">
     <button
       aria-label="start"
       hidden={currentState !== State.idle &&

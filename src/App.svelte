@@ -23,11 +23,16 @@
 <main>
   <div class="bg-rosso-scuro">
     <div class="flex justify-center items-center p-3">
-      <div class="text-7xl md:text-9xl text-verde text-center">{title}</div>
+      <div class="text-7xl md:text-9xl text-verde-chiaro text-center">
+        {title}
+      </div>
+    </div>
+    <div
+      class="flex justify-center items-center pt-5 text-verde-chiaro text-center"
+    >
+      <button class="neu-btn px-20 py-3 rounded-2xl text-xl">To Do</button>
     </div>
     <Timer />
-    <!--   <TaskList />
- -->
   </div>
   <div>
     <Info />
