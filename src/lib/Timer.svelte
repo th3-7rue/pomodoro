@@ -1,6 +1,6 @@
 <script>
-  import pomodoroHalf from "../assets/PomodoroHalf.png";
-  import pomodoroPieno from "../assets/PomodoroPieno.png";
+  import pomodoroHalf from "../assets/PomodoroHalf.webp";
+  import pomodoroPieno from "../assets/PomodoroPieno.webp";
   import start from "../assets/start.svg";
   import pause from "../assets/pause.svg";
   import stop from "../assets/stop.svg";
@@ -115,6 +115,7 @@
   </div>
   <div class="flex justify-center items-center p-3">
     <button
+      aria-label="start"
       hidden={currentState !== State.idle &&
         currentState !== State.progressPaused &&
         currentState !== State.restPaused}
@@ -124,6 +125,7 @@
       <img style="height: 80px;" src={start} alt="" />
     </button>
     <button
+      aria-label="pause"
       hidden={currentState === State.idle ||
         currentState === State.progressPaused ||
         currentState === State.restPaused}
@@ -133,6 +135,7 @@
       <img style="height: 70px;" src={pause} alt="" />
     </button>
     <button
+      aria-label="skip"
       hidden={currentState === State.idle}
       class="text-verde ml-5"
       on:click={skipTime}
@@ -140,6 +143,7 @@
       <img style="height: 80px;" src={skip} alt="" />
     </button>
     <button
+      aria-label="cancel"
       hidden={currentState === State.idle}
       class="text-verde ml-5"
       on:click={cancelPomodoro}
