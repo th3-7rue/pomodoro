@@ -22,3 +22,10 @@
     box-shadow: inset 10px 10px 20px #621402,
         inset -10px -10px 20px #841a02;
 }
+
+.neu-btn.sm {
+    border-radius: 50px;
+    background: #731702;
+    box-shadow: 6px 6px 13px #621402,
+        -6px -6px 13px #841a02;
+}

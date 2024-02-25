@@ -3,6 +3,10 @@
   import Info from "./lib/Info.svelte";
   //import TaskList from './TaskList.svelte';
   import Timer from "./lib/Timer.svelte";
+  import AddForm from "./lib/AddForm.svelte";
+  import ListaTodo from "./lib/ListaTodo.svelte";
+  import TodoCounter from "./lib/TodoCounter.svelte";
+  import { todos } from "./lib/store";
 </script>
 
 <head>
@@ -30,7 +34,16 @@
     <div
       class="flex justify-center items-center pt-5 text-verde-chiaro text-center"
     >
-      <button class="neu-btn px-20 py-3 rounded-2xl text-xl">To Do</button>
+      <button
+        on:click={() =>
+          document.querySelector("#todo").classList.toggle("hidden")}
+        class="neu-btn px-20 py-3 rounded-2xl text-xl">To Do</button
+      >
+    </div>
+    <div id="todo" class="hidden">
+      <TodoCounter />
+      <AddForm />
+      <ListaTodo todoList={$todos} />
     </div>
     <Timer />
   </div>
