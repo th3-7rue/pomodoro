@@ -104,13 +104,13 @@
   <div class="flex justify-center items-center">
     {#if pomodoroTime < POMODORO_S / 2}
       <img
-        style="width: 45vh; height: auto;"
+        style="width: 400px; height: 400px;"
         src={pomodoroHalf}
         alt="Pomodoro a metà"
       />
     {:else}
       <img
-        style="width: 45vh; height: auto;"
+        style="width: 400px; height: 400px;"
         src={pomodoroPieno}
         alt="Pomodoro pieno"
       />
