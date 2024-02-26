@@ -1,9 +1,9 @@
 <div class="bg-rosso-chiaro">
   <div class="container mx-auto px-4">
-    <div class="text-white text-6xl md:text-9xl text-center p-4">
+    <div class="text-white text-6xl lg:text-9xl text-center p-4">
       La tecnica del pomodoro
     </div>
-    <div class="text-white p-4 md:text-3xl pb-5">
+    <div class="text-white p-4 lg:text-3xl pb-5">
       The Pomodoro Technique, è una soluzione molto efficace per gestire il
       tempo. Inventata negli anni ’80 da Francesco Cirillo, uno sviluppatore di
       software, deve il suo nome ad un timer a forma di pomodoro utilizzato dal

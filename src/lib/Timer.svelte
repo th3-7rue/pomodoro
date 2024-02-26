@@ -104,24 +104,24 @@
   <div class="flex justify-center items-center">
     {#if pomodoroTime < POMODORO_S / 2}
       <img
-        style="width: 400px; height: 400px;"
+        class="size-80 xl:size-96"
         src={pomodoroHalf}
         alt="Pomodoro a metà"
       />
     {:else}
       <img
-        style="width: 400px; height: 400px;"
+        class="size-80 xl:size-96"
         src={pomodoroPieno}
         alt="Pomodoro pieno"
       />
     {/if}
   </div>
   <div class="flex justify-center items-center">
-    <p class="text-verde-chiaro text-7xl md:text-9xl">
+    <p class="text-verde-chiaro text-7xl lg:text-9xl">
       {formatTime(pomodoroTime)}
     </p>
   </div>
-  <div class="flex justify-center items-center md:p-3">
+  <div class="flex justify-center items-center lg:p-3">
     <button
       aria-label="start"
       hidden={currentState !== State.idle &&

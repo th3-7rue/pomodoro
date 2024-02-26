@@ -13,6 +13,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pomodoro timer with to do list" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     rel="preconnect"
@@ -28,7 +29,7 @@
 <main>
   <div class="bg-rosso-scuro">
     <div class="flex justify-center items-center p-3">
-      <div class="text-7xl md:text-9xl text-verde-chiaro text-center">
+      <div class="text-7xl lg:text-9xl text-verde-chiaro text-center">
         {title}
       </div>
     </div>
