@@ -15,13 +15,24 @@
     progressPaused: "progressPaused",
     restPaused: "restPaused",
   };
-
-  const POMODORO_S = minutesToSeconds(25);
-  const LONG_BREAK_S = minutesToSeconds(20);
-  const SHORT_BREAK_S = minutesToSeconds(5);
+  export let workTime;
+  export let srestTime;
+  export let lrestTime;
+  export let CYCLES_S;
+  let POMODORO_S;
+  let LONG_BREAK_S;
+  let SHORT_BREAK_S;
+  let pomodoroTime;
+  export function updateSettings() {
+    POMODORO_S = minutesToSeconds(workTime);
+    LONG_BREAK_S = minutesToSeconds(lrestTime);
+    SHORT_BREAK_S = minutesToSeconds(srestTime);
+    pomodoroTime = POMODORO_S;
+  }
+  updateSettings();
 
   let currentState = State.idle;
-  let pomodoroTime = POMODORO_S;
+
   let completedPomodoros = 0;
   let interval;
 
@@ -44,7 +55,7 @@
   function completePomodoro() {
     clearInterval(interval);
     completedPomodoros++;
-    if (completedPomodoros === 4) {
+    if (completedPomodoros === CYCLES_S) {
       rest(LONG_BREAK_S);
       completedPomodoros = 0;
     } else {

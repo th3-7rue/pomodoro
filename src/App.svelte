@@ -10,7 +10,14 @@
   import { fade } from "svelte/transition";
   import Modal from "./lib/Modal.svelte";
 
-  let showModal = false;
+  let showModal = true;
+  let settings = {
+    workTime: 25,
+    lrestTime: 20,
+    srestTime: 5,
+    CYCLES_S: 4,
+  };
+  let timer;
 </script>
 
 <head>
@@ -48,40 +55,61 @@
       >
     </div>
     <Modal bind:showModal>
-      <h2 slot="header">
-        modal
-        <small><em>adjective</em> mod·al \ˈmō-dəl\</small>
-      </h2>
+      <h2 slot="header">Personalizza</h2>
+      <div>
+        <ul>
+          <li>
+            Tempo di lavoro: <input
+              bind:value={settings.workTime}
+              min="1"
+              max="60"
+              step="1"
+              type="number"
+            />
+          </li>
 
-      <ol class="definition-list">
-        <li>of or relating to modality in logic</li>
-        <li>
-          containing provisions as to the mode of procedure or the manner of
-          taking effect —used of a contract or legacy
-        </li>
-        <li>of or relating to a musical mode</li>
-        <li>of or relating to structure as opposed to substance</li>
-        <li>
-          of, relating to, or constituting a grammatical form or category
-          characteristically indicating predication
-        </li>
-        <li>of or relating to a statistical mode</li>
-      </ol>
+          <li>
+            Tempo di pausa (breve): <input
+              value={settings.srestTime}
+              min="1"
+              max="60"
+              step="1"
+              type="number"
+            />
+          </li>
+          <li>
+            Tempo di pausa (lunga): <input
+              value={settings.lrestTime}
+              min="1"
+              max="60"
+              step="1"
+              type="number"
+            />
+          </li>
 
-      <a href="https://www.merriam-webster.com/dictionary/modal"
-        >merriam-webster.com</a
-      >
+          <li>
+            Numero di cicli: <input
+              bind:value={settings.CYCLES_S}
+              min="1"
+              max="60"
+              step="1"
+              type="number"
+            />
+          </li>
+        </ul>
+        <button on:click={() => timer.updateSettings()}>Conferma</button>
+      </div>
     </Modal>
 
     <div
-      class="flex justify-center items-center pt-5 text-verde-chiaro text-center"
+      class="flex justify-center items-center lg:pt-5 text-verde-chiaro text-center"
     ></div>
     <div id="todo" class="hidden text-verde-chiaro p-3">
       <TodoCounter />
       <AddForm />
       <ListaTodo todoList={$todos} />
     </div>
-    <Timer />
+    <Timer bind:this={timer} {...settings} />
   </div>
   <div>
     <Info />
