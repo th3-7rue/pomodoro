@@ -24,6 +24,11 @@
   let SHORT_BREAK_S;
   let pomodoroTime;
   export function updateSettings() {
+    // update local storage
+    localStorage.setItem("workTime", workTime);
+    localStorage.setItem("srestTime", srestTime);
+    localStorage.setItem("lrestTime", lrestTime);
+    localStorage.setItem("CYCLES_S", CYCLES_S);
     POMODORO_S = minutesToSeconds(workTime);
     LONG_BREAK_S = minutesToSeconds(lrestTime);
     SHORT_BREAK_S = minutesToSeconds(srestTime);

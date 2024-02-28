@@ -12,10 +12,11 @@
 
   let showModal = true;
   let settings = {
-    workTime: 25,
-    lrestTime: 20,
-    srestTime: 5,
-    CYCLES_S: 4,
+    // get from local storage if available
+    workTime: localStorage.getItem("workTime") || 25,
+    srestTime: localStorage.getItem("srestTime") || 5,
+    lrestTime: localStorage.getItem("lrestTime") || 15,
+    CYCLES_S: localStorage.getItem("CYCLES_S") || 4,
   };
   let timer;
 </script>
@@ -97,8 +98,11 @@
             />
           </li>
         </ul>
-        <button on:click={() => timer.updateSettings()}>Conferma</button>
       </div>
+      <button
+        class="neu-btn sm py-2 px-4 rounded-sm"
+        on:click={() => timer.updateSettings()}>Conferma</button
+      >
     </Modal>
 
     <div
