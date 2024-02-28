@@ -8,7 +8,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
-  class="bg-rosso-chiaro text-white"
+  class="bg-rosso-chiaro rounded-xl text-white"
   bind:this={dialog}
   on:close={() => (showModal = false)}
   on:click|self={() => dialog.close()}
@@ -27,7 +27,7 @@
 <style>
   dialog {
     max-width: 32em;
-    border-radius: 0.2em;
+
     border: none;
     padding: 0;
   }
