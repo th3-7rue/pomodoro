@@ -8,6 +8,9 @@
   import TodoCounter from "./lib/TodoCounter.svelte";
   import { todos } from "./lib/store";
   import { fade } from "svelte/transition";
+  import Modal from "./lib/Modal.svelte";
+
+  let showModal = false;
 </script>
 
 <head>
@@ -36,11 +39,42 @@
     <div
       class="flex justify-center items-center pt-5 text-verde-chiaro text-center"
     >
-      <button
-        on:click={() =>
-          document.querySelector("#todo").classList.toggle("hidden")}
-        class="neu-btn px-20 py-3 rounded-2xl text-xl">To Do</button
-      >
+      <div class="flex">
+        <button
+          on:click={() =>
+            document.querySelector("#todo").classList.toggle("hidden")}
+          class="neu-btn px-20 py-3 rounded-2xl text-xl ml-5">To Do</button
+        >
+        <button
+          on:click={() => (showModal = true)}
+          class="neu-btn px-20 py-3 rounded-2xl text-xl">Personalizza</button
+        >
+        <Modal bind:showModal>
+          <h2 slot="header">
+            modal
+            <small><em>adjective</em> mod·al \ˈmō-dəl\</small>
+          </h2>
+
+          <ol class="definition-list">
+            <li>of or relating to modality in logic</li>
+            <li>
+              containing provisions as to the mode of procedure or the manner of
+              taking effect —used of a contract or legacy
+            </li>
+            <li>of or relating to a musical mode</li>
+            <li>of or relating to structure as opposed to substance</li>
+            <li>
+              of, relating to, or constituting a grammatical form or category
+              characteristically indicating predication
+            </li>
+            <li>of or relating to a statistical mode</li>
+          </ol>
+
+          <a href="https://www.merriam-webster.com/dictionary/modal"
+            >merriam-webster.com</a
+          >
+        </Modal>
+      </div>
     </div>
     <div id="todo" class="hidden text-verde-chiaro p-3">
       <TodoCounter />
