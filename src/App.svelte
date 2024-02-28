@@ -10,7 +10,7 @@
   import { fade } from "svelte/transition";
   import Modal from "./lib/Modal.svelte";
 
-  let showModal = true;
+  let showModal = false;
   let settings = {
     // get from local storage if available
     workTime: localStorage.getItem("workTime") || 25,
@@ -60,7 +60,8 @@
       <div>
         <ul>
           <li>
-            Tempo di lavoro: <input
+            Tempo di lavoro:
+            <input
               bind:value={settings.workTime}
               min="1"
               max="60"
@@ -100,7 +101,7 @@
         </ul>
       </div>
       <button
-        class="neu-btn sm py-2 px-4 rounded-sm"
+        class="neu-btn-chiaro mb-3 sm py-2 px-4 rounded-xl"
         on:click={() => timer.updateSettings()}>Conferma</button
       >
     </Modal>

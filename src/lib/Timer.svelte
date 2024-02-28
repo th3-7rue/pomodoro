@@ -35,7 +35,14 @@
     pomodoroTime = POMODORO_S;
   }
   updateSettings();
-
+  export function hidePomodoro() {
+    // hide image
+    document.getElementById("imgPomodoro").style.opacity = "0";
+  }
+  export function showPomodoro() {
+    // show image
+    document.getElementById("imgPomodoro").style.opacity = "1";
+  }
   let currentState = State.idle;
 
   let completedPomodoros = 0;
@@ -117,7 +124,7 @@
 </script>
 
 <section>
-  <div class="flex justify-center items-center">
+  <div id="imgPomodoro" class="flex justify-center items-center">
     {#if pomodoroTime < POMODORO_S / 2}
       <img
         class="size-80 xl:size-96"

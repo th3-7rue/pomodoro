@@ -46,6 +46,21 @@
     outline: none;
 }
 
+.neu-btn-chiaro {
+    background: #B31003;
+    box-shadow: 10px 10px 20px #980e03,
+        -10px -10px 20px #ce1203;
+}
+
+.neu-btn-chiaro:hover {
+    background: linear-gradient(145deg, #A90E03, #C20F03);
+}
+
+.neu-btn-chiaro:active {
+    box-shadow: inset 10px 10px 20px #980e03,
+        inset -10px -10px 20px #ce1203;
+}
+
 input[type="number"] {
     padding: 10px;
     border: none;
@@ -53,8 +68,8 @@ input[type="number"] {
     box-shadow: inset 10px 10px 20px #980e03,
         inset -10px -10px 20px #ce1203;
     color: #fff;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     background: #B31003;
 }
 
