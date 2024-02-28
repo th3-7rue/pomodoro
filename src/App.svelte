@@ -30,52 +30,52 @@
 </head>
 
 <main>
-  <div class="bg-rosso-scuro">
+  <div class="bg-rosso-scuro text-verde-chiaro">
     <div class="flex justify-center items-center p-3">
-      <div class="text-7xl lg:text-9xl text-verde-chiaro text-center">
+      <div class="text-7xl lg:text-9xl text-center">
         {title}
       </div>
     </div>
+    <div class="flex flex-row p-2 space-x-2 lg:p-6 lg:space-x-6">
+      <button
+        on:click={() =>
+          document.querySelector("#todo").classList.toggle("hidden")}
+        class="neu-btn py-3 rounded-2xl text-xl basis-1/2">To Do</button
+      >
+      <button
+        on:click={() => (showModal = true)}
+        class="neu-btn py-3 rounded-2xl text-xl basis-1/2">Personalizza</button
+      >
+    </div>
+    <Modal bind:showModal>
+      <h2 slot="header">
+        modal
+        <small><em>adjective</em> mod·al \ˈmō-dəl\</small>
+      </h2>
+
+      <ol class="definition-list">
+        <li>of or relating to modality in logic</li>
+        <li>
+          containing provisions as to the mode of procedure or the manner of
+          taking effect —used of a contract or legacy
+        </li>
+        <li>of or relating to a musical mode</li>
+        <li>of or relating to structure as opposed to substance</li>
+        <li>
+          of, relating to, or constituting a grammatical form or category
+          characteristically indicating predication
+        </li>
+        <li>of or relating to a statistical mode</li>
+      </ol>
+
+      <a href="https://www.merriam-webster.com/dictionary/modal"
+        >merriam-webster.com</a
+      >
+    </Modal>
+
     <div
       class="flex justify-center items-center pt-5 text-verde-chiaro text-center"
-    >
-      <div class="flex">
-        <button
-          on:click={() =>
-            document.querySelector("#todo").classList.toggle("hidden")}
-          class="neu-btn px-20 py-3 rounded-2xl text-xl ml-5">To Do</button
-        >
-        <button
-          on:click={() => (showModal = true)}
-          class="neu-btn px-20 py-3 rounded-2xl text-xl">Personalizza</button
-        >
-        <Modal bind:showModal>
-          <h2 slot="header">
-            modal
-            <small><em>adjective</em> mod·al \ˈmō-dəl\</small>
-          </h2>
-
-          <ol class="definition-list">
-            <li>of or relating to modality in logic</li>
-            <li>
-              containing provisions as to the mode of procedure or the manner of
-              taking effect —used of a contract or legacy
-            </li>
-            <li>of or relating to a musical mode</li>
-            <li>of or relating to structure as opposed to substance</li>
-            <li>
-              of, relating to, or constituting a grammatical form or category
-              characteristically indicating predication
-            </li>
-            <li>of or relating to a statistical mode</li>
-          </ol>
-
-          <a href="https://www.merriam-webster.com/dictionary/modal"
-            >merriam-webster.com</a
-          >
-        </Modal>
-      </div>
-    </div>
+    ></div>
     <div id="todo" class="hidden text-verde-chiaro p-3">
       <TodoCounter />
       <AddForm />
