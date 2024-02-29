@@ -5,6 +5,9 @@
   import pause from "../assets/pause.svg";
   import stop from "../assets/stop.svg";
   import skip from "../assets/skip.svg";
+  import tickTrack from "../assets/tick.mp3";
+  import weeTrack from "../assets/wee.mp3";
+  import overTrack from "../assets/over.mp3";
   const minutesToSeconds = (minutes) => minutes * 60;
   const secondsToMinutes = (seconds) => Math.floor(seconds / 60);
   const padWithZeroes = (number) => number.toString().padStart(2, "0");
@@ -53,8 +56,12 @@
     const remainingSeconds = timeInSeconds % 60;
     return `${padWithZeroes(minutes)}:${padWithZeroes(remainingSeconds)}`;
   }
-
+  let tick = new Audio(tickTrack);
+  tick.loop = true;
+  let wee = new Audio(weeTrack);
+  let over = new Audio(overTrack);
   function startPomodoro() {
+    tick.play();
     currentState = State.inProgress;
     interval = setInterval(() => {
       if (pomodoroTime === 0) {
@@ -65,6 +72,8 @@
   }
 
   function completePomodoro() {
+    tick.pause();
+    wee.play();
     clearInterval(interval);
     completedPomodoros++;
     if (completedPomodoros === CYCLES_S) {
@@ -75,10 +84,14 @@
     }
   }
   function completeRest() {
+    tick.pause();
+
+    over.play();
     idle();
     startPomodoro();
   }
   function skipTime() {
+    tick.pause();
     if (
       currentState === State.inProgress ||
       currentState === State.progressPaused
@@ -92,6 +105,7 @@
     }
   }
   function rest(time) {
+    tick.play();
     currentState = State.resting;
     pomodoroTime = time;
     interval = setInterval(() => {
@@ -103,11 +117,15 @@
   }
 
   function cancelPomodoro() {
+    tick.pause();
+
     // TODO: Add some logic to prompt the user to write down
     // the cause of the interruption.
     idle();
   }
   function pauseTime() {
+    tick.pause();
+
     clearInterval(interval);
     if (currentState === State.inProgress) {
       currentState = State.progressPaused;
