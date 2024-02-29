@@ -11,7 +11,7 @@
   import Modal from "./lib/Modal.svelte";
   import volume_up from "./assets/volume_up.svg";
   import volume_off from "./assets/volume_off.svg";
-
+  let volume_src = volume_off;
   let showModal = false;
   let settings = {
     // get from local storage if available
@@ -42,8 +42,13 @@
 <main>
   <div class="bg-rosso-scuro text-verde-chiaro">
     <div class="p-2 lg:p-6 flex flex-col md:flex-row flex-none items-center">
-      <button class="neu-btn order-2 md:order-1 grow-0 sm p-2 md:p-3"
-        ><img class="size-4 md:size-6" src={volume_off} alt="" /></button
+      <button
+        on:click={timer.mute()}
+        on:click={() => {
+          volume_src = volume_src === volume_off ? volume_up : volume_off;
+        }}
+        class="neu-btn order-2 md:order-1 grow-0 sm p-2 md:p-3"
+        ><img class="size-4 md:size-6" src={volume_src} alt="" /></button
       >
       <div class="text-7xl order-1 md:order-2 lg:text-9xl ml-auto mr-auto">
         {title}

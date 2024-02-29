@@ -37,6 +37,11 @@
     SHORT_BREAK_S = minutesToSeconds(srestTime);
     pomodoroTime = POMODORO_S;
   }
+  export function mute() {
+    tick.muted = !tick.muted;
+    wee.muted = !wee.muted;
+    over.muted = !over.muted;
+  }
   updateSettings();
   export function hidePomodoro() {
     // hide image
