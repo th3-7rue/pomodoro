@@ -109,7 +109,7 @@
     <div
       class="flex justify-center items-center lg:pt-5 text-verde-chiaro text-center"
     ></div>
-    <div id="todo" class="hidden text-verde-chiaro p-3">
+    <div id="todo" class="hidden text-verde-chiaro p-6">
       <TodoCounter />
       <AddForm />
       <ListaTodo todoList={$todos} />

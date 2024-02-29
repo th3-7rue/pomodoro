@@ -26,7 +26,7 @@
     class="placeholder:text-verde-chiaro neu-btn sm active p-2 rounded-sm w-full mr-1 text-verde-chiaro"
     bind:value={nuovoTodo}
   />
-  <button on:click={AddTodo} class="neu-btn sm rounded-sm p-2 ms-3 mr-3"
+  <button on:click={AddTodo} class="neu-btn sm rounded-sm p-2 ml-3"
     >Aggiungi</button
   >
 </form>
