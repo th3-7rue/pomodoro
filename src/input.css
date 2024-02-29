@@ -73,6 +73,7 @@ input[type="number"] {
     background: #B31003;
 }
 
+
 input[type="number"]:focus {
     outline: none;
 }
