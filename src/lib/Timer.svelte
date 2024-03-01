@@ -176,7 +176,7 @@
       class="text-verde"
       on:click={startPomodoro}
     >
-      <img style="height: 80px;" src={start} alt="" />
+      <img style="width: 70px;" src={start} alt="" />
     </button>
     <button
       aria-label="pause"
@@ -186,7 +186,7 @@
       class="text-verde"
       on:click={pauseTime}
     >
-      <img style="height: 70px;" src={pause} alt="" />
+      <img style="width: 70px;" src={pause} alt="" />
     </button>
     <button
       aria-label="skip"
@@ -194,7 +194,7 @@
       class="text-verde ml-5"
       on:click={skipTime}
     >
-      <img style="height: 80px;" src={skip} alt="" />
+      <img style="width: 70px;" src={skip} alt="" />
     </button>
     <button
       aria-label="cancel"
@@ -202,7 +202,7 @@
       class="text-verde ml-5"
       on:click={cancelPomodoro}
     >
-      <img style="height: 80px;" src={stop} alt="" />
+      <img style="width: 70px;" src={stop} alt="" />
     </button>
   </div>
   <!--button on:click={completePomodoro}>complete</button-->
