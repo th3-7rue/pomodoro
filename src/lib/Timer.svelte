@@ -1,4 +1,5 @@
 <script>
+  import pomodoroHalf from "../assets/PomodoroHalf.webp";
   import pomodoroPieno from "../assets/PomodoroPieno.webp";
   import start from "../assets/start.svg";
   import pause from "../assets/pause.svg";
@@ -158,8 +159,10 @@
     <img
       class="size-80 xl:size-96"
       style="mask-image: conic-gradient(black {progress}%, transparent {progress}%); -webkit-mask-image: conic-gradient(black {progress}%, transparent {progress}%);"
-      src={pomodoroPieno}
-      alt="Pomodoro pieno"
+      src={currentState === State.resting || currentState === State.restPaused
+        ? pomodoroHalf
+        : pomodoroPieno}
+      alt="Pomodoro"
     />
   </div>
   <div class="flex justify-center items-center">
