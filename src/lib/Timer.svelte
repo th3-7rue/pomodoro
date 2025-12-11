@@ -1,5 +1,4 @@
 <script>
-  import pomodoroHalf from "../assets/PomodoroHalf.webp";
   import pomodoroPieno from "../assets/PomodoroPieno.webp";
   import start from "../assets/start.svg";
   import pause from "../assets/pause.svg";
@@ -26,6 +25,7 @@
   let LONG_BREAK_S;
   let SHORT_BREAK_S;
   let pomodoroTime;
+  let currentTotalTime;
   export function updateSettings() {
     // update local storage
     localStorage.setItem("workTime", workTime);
@@ -36,6 +36,7 @@
     LONG_BREAK_S = minutesToSeconds(lrestTime);
     SHORT_BREAK_S = minutesToSeconds(srestTime);
     pomodoroTime = POMODORO_S;
+    currentTotalTime = POMODORO_S;
     // Ensure CYCLES_S is a number for comparison
     CYCLES_S = Number(CYCLES_S);
   }
@@ -116,6 +117,7 @@
     tick.play();
     currentState = State.resting;
     pomodoroTime = time;
+    currentTotalTime = time;
     interval = setInterval(() => {
       if (pomodoroTime === 0) {
         idle();
@@ -145,25 +147,20 @@
     currentState = State.idle;
     clearInterval(interval);
     pomodoroTime = POMODORO_S;
+    currentTotalTime = POMODORO_S;
   }
+  $: progress = (pomodoroTime / currentTotalTime) * 100;
   // add skip button logic
 </script>
 
 <section>
   <div id="imgPomodoro" class="flex justify-center items-center">
-    {#if pomodoroTime < POMODORO_S / 2}
-      <img
-        class="size-80 xl:size-96"
-        src={pomodoroHalf}
-        alt="Pomodoro a metà"
-      />
-    {:else}
-      <img
-        class="size-80 xl:size-96"
-        src={pomodoroPieno}
-        alt="Pomodoro pieno"
-      />
-    {/if}
+    <img
+      class="size-80 xl:size-96"
+      style="mask-image: conic-gradient(black {progress}%, transparent {progress}%); -webkit-mask-image: conic-gradient(black {progress}%, transparent {progress}%);"
+      src={pomodoroPieno}
+      alt="Pomodoro pieno"
+    />
   </div>
   <div class="flex justify-center items-center">
     <p class="text-verde-chiaro text-7xl lg:text-9xl">
