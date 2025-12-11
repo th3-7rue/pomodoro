@@ -82,7 +82,7 @@
 
           <li>
             Tempo di pausa (breve): <input
-              value={settings.srestTime}
+              bind:value={settings.srestTime}
               min="1"
               max="60"
               step="1"
@@ -91,7 +91,7 @@
           </li>
           <li>
             Tempo di pausa (lunga): <input
-              value={settings.lrestTime}
+              bind:value={settings.lrestTime}
               min="1"
               max="60"
               step="1"
@@ -112,7 +112,10 @@
       </div>
       <button
         class="neu-btn-chiaro mb-3 sm py-2 px-4 rounded-xl"
-        on:click={() => timer.updateSettings()}>Conferma</button
+        on:click={() => {
+          timer.updateSettings();
+          showModal = false;
+        }}>Conferma</button
       >
     </Modal>
 

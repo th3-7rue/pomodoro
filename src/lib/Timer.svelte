@@ -66,6 +66,7 @@
   let wee = new Audio(weeTrack);
   let over = new Audio(overTrack);
   function startPomodoro() {
+    clearInterval(interval);
     tick.play();
     currentState = State.inProgress;
     interval = setInterval(() => {
