@@ -36,6 +36,8 @@
     LONG_BREAK_S = minutesToSeconds(lrestTime);
     SHORT_BREAK_S = minutesToSeconds(srestTime);
     pomodoroTime = POMODORO_S;
+    // Ensure CYCLES_S is a number for comparison
+    CYCLES_S = Number(CYCLES_S);
   }
   export function mute() {
     tick.muted = !tick.muted;

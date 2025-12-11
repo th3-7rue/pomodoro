@@ -49,27 +49,30 @@ describe('App', () => {
 
 
     it('should show error message when entering invalid values', async () => {
-        const { getByText, container } = render(App);
+        const { getByText, findByText, container } = render(App);
 
         // Open modal
-        const personalizeBtn = getByText('Personalizza');
+        const personalizeBtn = getByText('Personalizza', { selector: 'button' });
         await fireEvent.click(personalizeBtn);
 
         const inputs = container.querySelectorAll('input[type="number"]');
         const workTimeInput = inputs[0]; // Assuming order: work, srest, lrest, cycles
 
         // Enter invalid value
-        await fireEvent.input(workTimeInput, { target: { value: '100' } });
+        workTimeInput.value = '100';
+        await fireEvent.input(workTimeInput);
+        // await fireEvent.change(workTimeInput); // sometimes needed depending on listener
 
         // Click Confirm
         const confirmBtn = getByText('Conferma');
         await fireEvent.click(confirmBtn);
 
         // Check for error message
-        expect(getByText('Il tempo di lavoro deve essere tra 1 e 60 minuti.')).toBeInTheDocument();
+        await findByText('Il tempo di lavoro deve essere tra 1 e 60 minuti.');
 
         // Modal should still be open
         expect(confirmBtn).toBeVisible();
     });
+
 
 });

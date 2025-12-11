@@ -15,10 +15,10 @@
   let showModal = false;
   let settings = {
     // get from local storage if available
-    workTime: localStorage.getItem("workTime") || 25,
-    srestTime: localStorage.getItem("srestTime") || 5,
-    lrestTime: localStorage.getItem("lrestTime") || 15,
-    CYCLES_S: localStorage.getItem("CYCLES_S") || 4,
+    workTime: Number(localStorage.getItem("workTime")) || 25,
+    srestTime: Number(localStorage.getItem("srestTime")) || 5,
+    lrestTime: Number(localStorage.getItem("lrestTime")) || 15,
+    CYCLES_S: Number(localStorage.getItem("CYCLES_S")) || 4,
   };
   let timer;
   let errorMessage = "";

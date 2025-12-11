@@ -109,4 +109,5 @@ describe('Timer', () => {
         // We need to wait for DOM update.
         // Use a slight delay or just check.
     });
+
 });
