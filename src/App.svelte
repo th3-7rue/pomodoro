@@ -21,6 +21,33 @@
     CYCLES_S: localStorage.getItem("CYCLES_S") || 4,
   };
   let timer;
+  let errorMessage = "";
+
+  function validateSettings() {
+    errorMessage = "";
+    const workTime = Number(settings.workTime);
+    const srestTime = Number(settings.srestTime);
+    const lrestTime = Number(settings.lrestTime);
+    const cycles = Number(settings.CYCLES_S);
+
+    if (workTime < 1 || workTime > 60) {
+      errorMessage = "Il tempo di lavoro deve essere tra 1 e 60 minuti.";
+      return false;
+    }
+    if (srestTime < 1 || srestTime > 60) {
+      errorMessage = "Il tempo di pausa breve deve essere tra 1 e 60 minuti.";
+      return false;
+    }
+    if (lrestTime < 1 || lrestTime > 60) {
+      errorMessage = "Il tempo di pausa lunga deve essere tra 1 e 60 minuti.";
+      return false;
+    }
+    if (cycles < 1 || cycles > 12) {
+      errorMessage = "Il numero di cicli deve essere tra 1 e 12.";
+      return false;
+    }
+    return true;
+  }
 </script>
 
 <head>
@@ -113,10 +140,15 @@
       <button
         class="neu-btn-chiaro mb-3 sm py-2 px-4 rounded-xl"
         on:click={() => {
-          timer.updateSettings();
-          showModal = false;
+          if (validateSettings()) {
+            timer.updateSettings();
+            showModal = false;
+          }
         }}>Conferma</button
       >
+      {#if errorMessage}
+        <p class="text-red-500 mt-2 text-center">{errorMessage}</p>
+      {/if}
     </Modal>
 
     <div

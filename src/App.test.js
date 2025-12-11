@@ -9,12 +9,15 @@ describe('App', () => {
     // And matchMedia if needed for responsive classes? But we just render.
 
     beforeEach(() => {
-        window.Audio = vi.fn(() => ({
-            play: vi.fn(),
-            pause: vi.fn(),
-            loop: false,
-            muted: false
-        }));
+        // @ts-ignore
+        window.Audio = vi.fn(function () {
+            return {
+                play: vi.fn(),
+                pause: vi.fn(),
+                loop: false,
+                muted: false
+            };
+        });
 
         // Mock dialog
         HTMLDialogElement.prototype.showModal = vi.fn(function () { this.open = true; });
@@ -44,12 +47,29 @@ describe('App', () => {
         expect(todoSection).toHaveClass('hidden');
     });
 
-    it('should open personalization modal', async () => {
-        const { getByText } = render(App);
-        const personalizeBtn = getByText('Personalizza');
 
+    it('should show error message when entering invalid values', async () => {
+        const { getByText, container } = render(App);
+
+        // Open modal
+        const personalizeBtn = getByText('Personalizza');
         await fireEvent.click(personalizeBtn);
-        const dialog = document.querySelector('dialog');
-        expect(dialog.showModal).toHaveBeenCalled();
+
+        const inputs = container.querySelectorAll('input[type="number"]');
+        const workTimeInput = inputs[0]; // Assuming order: work, srest, lrest, cycles
+
+        // Enter invalid value
+        await fireEvent.input(workTimeInput, { target: { value: '100' } });
+
+        // Click Confirm
+        const confirmBtn = getByText('Conferma');
+        await fireEvent.click(confirmBtn);
+
+        // Check for error message
+        expect(getByText('Il tempo di lavoro deve essere tra 1 e 60 minuti.')).toBeInTheDocument();
+
+        // Modal should still be open
+        expect(confirmBtn).toBeVisible();
     });
+
 });

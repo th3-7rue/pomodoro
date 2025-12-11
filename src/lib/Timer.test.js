@@ -8,8 +8,10 @@ const audioMock = {
     loop: false,
     muted: false
 };
-// Use vi.fn returning the mock object directly, enabling it to be used as a constructor
-window.Audio = vi.fn(() => audioMock);
+
+// Use vi.fn with a regular function to support 'new'
+// @ts-ignore
+window.Audio = vi.fn(function () { return audioMock; });
 
 describe('Timer', () => {
     let props = {

@@ -47,7 +47,7 @@ describe('AddForm', () => {
 
     it('should clear input after successful add', async () => {
         const { getByPlaceholderText, getByText } = render(AddForm);
-        const input = getByPlaceholderText('Scrivi qui');
+        const input = /** @type {HTMLInputElement} */ (getByPlaceholderText('Scrivi qui'));
         const button = getByText('Aggiungi');
 
         await fireEvent.input(input, { target: { value: 'Task' } });
